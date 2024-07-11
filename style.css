@@ -171,6 +171,10 @@ ul li {
         font-size: 0.7em; /* Tamanho de fonte ainda menor para o botão de exclusão em telas pequenas */
         padding: 3px 5px; /* Reduz o padding do botão */
     }
+
+    #print-area{
+        background: orange;
+    }
   
 }
 
