@@ -171,8 +171,6 @@ ul li {
         font-size: 0.7em; /* Tamanho de fonte ainda menor para o botão de exclusão em telas pequenas */
         padding: 3px 5px; /* Reduz o padding do botão */
     }
-    h3,#print-passenger-list,#imagem{
-        margin-left: 300px;
-    }
+  
 }
 
