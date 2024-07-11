@@ -41,7 +41,7 @@ pre{
     text-align:left
        
 }
-#print-passenger-list{
+#print-passenger-list,h3, #imagem{
     margin-left: 75px;
 }
 
@@ -172,7 +172,7 @@ ul li {
         padding: 3px 5px; /* Reduz o padding do botão */
     }
     h3,#print-passenger-list,#imagem{
-        margin-left: 55px;
+        margin-left: 300px;
     }
 }
 
