@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Viagem Gol</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registro de Viagem</h1>
+
+        <form id="trip-form">
+            <label for="driver-name">Nome do Motorista:</label>
+            <input type="text" id="driver-name"  required><br>
+
+            <label for="plate">Placa do Veículo:</label>
+            <input type="text" id="plate"  required><br>
+
+            <label for="phone">Telefone:</label>
+            <input type="tel" id="phone"  required><br>
+
+            <label for="departure-date">Data de Saída:</label>
+            <input type="date" id="departure-date" required><br>
+
+            <label for="departure-time">Horário de Saída:</label>
+            <input type="time" id="departure-time"  required><br>
+
+            <label for="arrival-time">Horário de Chegada:</label>
+            <input type="time" id="arrival-time"  required><br>
+
+            <label for="destination">Destino:</label>
+            <input type="text" id="destination"  required><br>
+
+             <label for="passenger-name">Nome do Passageiro:</label>
+            <input type="text" id="passenger-name"><br>
+
+            <button type="button" id="add-passenger">Adicionar Passageiro</button>
+            <button type="submit">Concluir</button>
+        </form>
+
+        <h2>Passageiros</h2>
+        <ul id="passenger-list"></ul>
+
+        <h2>Detalhes da Viagem</h2>
+        <pre id="trip-details"></pre>
+
+        <button id="print-button">Imprimir Passageiros</button>
+        <button id="restart">Resetar</button>
+
+        <div id="print-area" class="printable">
+            <img src="./gol.svg" id="imagem" alt="TESTE" height="100px" width="100px">
+            <h3  >Detalhes da Viagem</h2>
+            <pre id="print-trip-details"></pre>
+            <h3 >Passageiros</h2>
+            <ul id="print-passenger-list"></ul>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
