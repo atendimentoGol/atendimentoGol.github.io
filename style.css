@@ -42,7 +42,7 @@ pre{
        
 }
 #print-passenger-list,h3, #imagem{
-    margin-left: 75px;
+    margin-left: 72px;
 }
 
 
@@ -61,18 +61,31 @@ button:hover {
     color: rgb(20, 18, 18);
 }
 
-ul {
-    list-style-type: circle;
-    padding: 0;
-}
+ /* Estilo para a lista não ordenada */
+ ol {
+    padding-left: 0; /* Remove o padding padrão da lista */
+    list-style: none; /* Remove o estilo padrão da lista */
+  }
 
-ul li {
-    
-    display: flex;
-    align-items: center;
-    color: rgb(7, 7, 7);
-           
-}
+  /* Estilo para os itens da lista */
+  ol li {
+    display: flex; /* Aplica o flexbox aos itens da lista */
+    padding-left: 20px; /* Espaçamento interno dos itens da lista */
+    border-bottom: 1px solid gray;
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    color: rgb(7, 7, 7); /* Cor do texto dos itens da lista */
+    position: relative; /* Torna o li um contexto de posicionamento */
+  }
+
+  /* Pseudo-elemento antes de cada item da lista */
+  ol li::before {
+    counter-increment: list-item; /* Incrementa o contador para cada item */
+    content: counter(list-item) "."; /* Define o conteúdo como o contador decimal seguido de um ponto */
+    position: absolute; /* Posição absoluta em relação ao li */
+    left: 0px; /* Ajusta a posição do marcador para a esquerda */
+    color: black; /* Cor do marcador */
+    font-size: 20px; /* Tamanho do marcador */
+  }
 
 
 #print-area {
@@ -111,7 +124,7 @@ ul li {
 
 /* Estilo para o botão de exclusão */
 .delete-passenger {
-    position: relative;
+    position:relative;
     width: 20%;
     background-color: #f0eaea; /* Cor vermelha para o botão de exclusão */
     color: rgb(0, 0, 0);
@@ -119,6 +132,7 @@ ul li {
     margin-left: auto;
     padding: 5px 8px; /* Espaçamento interno menor (5px superior/inferior, 8px esquerda/direita) */
     cursor: pointer;
+    margin-bottom: 10px;
     font-size: 0.8em; /* Tamanho de fonte menor para o botão */
 }
 
