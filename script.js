@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const listItem = document.createElement('li');
             listItem.textContent = passenger;
             printPassengerList.appendChild(listItem);
+            listItem.style.listStyleType="decimal";
            
         });
         // Copia os detalhes da viagem para a área de impressão
