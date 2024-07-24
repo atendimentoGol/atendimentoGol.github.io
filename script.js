@@ -11,20 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Array para armazenar os nomes dos passageiros
     const passengers = [];
-
+    
     // Adiciona um evento de clique ao botão "Adicionar Passageiro"
     document.getElementById('add-passenger').addEventListener('click', () => {
         const passengerName = document.getElementById('passenger-name').value;
+        const location = document.getElementById("Location").value; 
         if (passengerName) {
             // Adiciona o nome do passageiro ao array e à lista exibida
-            passengers.push(passengerName); 
-            const listItem = document.createElement('li');
+            passengers.push(passengerName); // adiciona passageiro ao array
+            
+            const listItem = document.createElement('li'); //criar um item de lista
             
           
+             /*criar um botão localizador
+             const localizador = document.createElement("span");
+             localizador.textContent = location; 
+             localizador.classList.add("delete-passenger")*/
+             
            
             // Cria o nome do passageiro
             listItem.textContent = passengerName;
             
+           
                         
             // Cria o botão de exclusão para o passageiro
             const deleteButton = document.createElement('button');
@@ -40,11 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             // Adiciona o botão de exclusão ao item da lista
+            
             listItem.appendChild(deleteButton);
+           
            
             // Adiciona o item à lista de passageiros
             
             passengerList.appendChild(listItem);
+            
             // Limpa o campo de entrada do nome do passageiro
             document.getElementById('passenger-name').value = '';
         }
@@ -77,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const listItem = document.createElement('li');
             listItem.textContent = passenger;
             printPassengerList.appendChild(listItem);
-            listItem.style.listStyleType="decimal";
+            listItem.style.listStyleType="circle";
            
         });
         // Copia os detalhes da viagem para a área de impressão

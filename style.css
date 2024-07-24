@@ -70,6 +70,7 @@ button:hover {
   /* Estilo para os itens da lista */
   ol li {
     display: flex; /* Aplica o flexbox aos itens da lista */
+    
     padding-left: 20px; /* Espaçamento interno dos itens da lista */
     border-bottom: 1px solid gray;
     align-items: center; /* Alinha os itens ao centro verticalmente */
@@ -135,6 +136,7 @@ button:hover {
     margin-bottom: 10px;
     font-size: 0.8em; /* Tamanho de fonte menor para o botão */
 }
+
 
 /* Estilos para o texto do nome do passageiro */
 .passenger-name {
