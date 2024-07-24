@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault(); // Previne o comportamento padrão de submissão do formulário
         const tripData = {
             driverName: document.getElementById('driver-name').value,
-            location: document.getElementById("Location").value,
             plate: document.getElementById('plate').value,
             phone: document.getElementById('phone').value,
             departureDate: document.getElementById('departure-date').value,
@@ -119,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tripDetails.textContent = `
         Nome do Motorista: ${tripData.driverName}\n 
-        Localizador: ${tripData.location}\n
         Placa: ${tripData.plate}\n
         Telefone: ${tripData.phone}\n
         Data de Saída: ${tripData.departureDate}\n
