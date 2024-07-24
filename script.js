@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Adiciona um evento de clique ao botão "Adicionar Passageiro"
     document.getElementById('add-passenger').addEventListener('click', () => {
         const passengerName = document.getElementById('passenger-name').value;
-        const location = document.getElementById("Location").value; 
         if (passengerName) {
             // Adiciona o nome do passageiro ao array e à lista exibida
             passengers.push(passengerName); // adiciona passageiro ao array
@@ -47,14 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
+             // Adiciona o item à lista de passageiros
             // Adiciona o botão de exclusão ao item da lista
+            passengerList.appendChild(listItem);
+           
             
             listItem.appendChild(deleteButton);
+                      
            
-           
-            // Adiciona o item à lista de passageiros
             
-            passengerList.appendChild(listItem);
             
             // Limpa o campo de entrada do nome do passageiro
             document.getElementById('passenger-name').value = '';
