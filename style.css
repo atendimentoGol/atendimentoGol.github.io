@@ -137,6 +137,21 @@ button:hover {
     font-size: 0.8em; /* Tamanho de fonte menor para o botão */
 }
 
+.localizador-passenger {
+    position:relative;
+    width: 20%;
+    text-align: center;
+    background-color: #e6fc23; /* Cor vermelha para o botão de exclusão */
+    color: rgb(0, 0, 0);
+    border: none;
+    margin-left: auto;
+    padding: auto; /* Espaçamento interno menor (5px superior/inferior, 8px esquerda/direita) */
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 0.8em; /* Tamanho de fonte menor para o botão */
+}
+
+
 
 /* Estilos para o texto do nome do passageiro */
 .passenger-name {

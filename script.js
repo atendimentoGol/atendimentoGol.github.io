@@ -11,21 +11,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Array para armazenar os nomes dos passageiros
     const passengers = [];
-    
+    const location_array = []; 
     // Adiciona um evento de clique ao botão "Adicionar Passageiro"
     document.getElementById('add-passenger').addEventListener('click', () => {
         const passengerName = document.getElementById('passenger-name').value;
-        if (passengerName) {
+        const locations = document.getElementById("location").value; 
+
+        if (passengerName && locations) {
             // Adiciona o nome do passageiro ao array e à lista exibida
             passengers.push(passengerName); // adiciona passageiro ao array
+            location_array.push(locations) 
             
             const listItem = document.createElement('li'); //criar um item de lista
             
           
-             /*criar um botão localizador
+            // criar um botão localizador
              const localizador = document.createElement("span");
-             localizador.textContent = location; 
-             localizador.classList.add("delete-passenger")*/
+             localizador.textContent = locations; 
+             localizador.classList.add("localizador-passenger")
              
            
             // Cria o nome do passageiro
@@ -49,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
              // Adiciona o item à lista de passageiros
             // Adiciona o botão de exclusão ao item da lista
             passengerList.appendChild(listItem);
-           
-            
+                      
+            listItem.appendChild(localizador);
             listItem.appendChild(deleteButton);
                       
            
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Limpa o campo de entrada do nome do passageiro
             document.getElementById('passenger-name').value = '';
+            document.getElementById("location").value = "";
         }
     });
 
@@ -83,13 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Copia a lista de passageiros para a área de impressão
         printPassengerList.innerHTML = '';
        
-        passengers.forEach(passenger => {
+        
+
+        passengers.forEach((passenger, index) => {
             const listItem = document.createElement('li');
-            listItem.textContent = passenger;
+            listItem.textContent = `${passenger}  [${location_array[index]}]`;
             printPassengerList.appendChild(listItem);
-            listItem.style.listStyleType="circle";
-           
         });
+
+
+        
         // Copia os detalhes da viagem para a área de impressão
         printTripDetails.textContent = tripDetails.textContent;
         // Mostra a área de impressão
