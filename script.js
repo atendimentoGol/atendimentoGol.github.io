@@ -17,22 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const passengerName = document.getElementById('passenger-name').value;
         const locations = document.getElementById("location").value; 
 
-        if (passengerName && locations) {
+        if (passengerName || locations) {
             // Adiciona o nome do passageiro ao array e à lista exibida
-            passengers.push(passengerName); // adiciona passageiro ao array
-            location_array.push(locations) 
+            passengers.push(passengerName.toUpperCase()); // adiciona passageiro ao array
+            location_array.push(locations.toUpperCase()) 
             
             const listItem = document.createElement('li'); //criar um item de lista
             
           
             // criar um botão localizador
              const localizador = document.createElement("span");
-             localizador.textContent = locations; 
+             localizador.textContent = locations.toUpperCase(); 
              localizador.classList.add("localizador-passenger")
              
            
             // Cria o nome do passageiro
-            listItem.textContent = passengerName;
+            listItem.textContent = passengerName.toUpperCase();
             
            
                         
@@ -51,12 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
              // Adiciona o item à lista de passageiros
             // Adiciona o botão de exclusão ao item da lista
-            passengerList.appendChild(listItem);
-                      
+            
             listItem.appendChild(localizador);
             listItem.appendChild(deleteButton);
                       
-           
+            passengerList.appendChild(listItem);
+                      
+            
+            totalPassageiro += 1; 
             
             
             // Limpa o campo de entrada do nome do passageiro
@@ -124,14 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
 
         tripDetails.textContent = `
-        Nome do Motorista: ${tripData.driverName}\n 
-        Placa: ${tripData.plate}\n
+        Nome do Motorista: ${tripData.driverName.toUpperCase()}\n 
+        Placa: ${tripData.plate.toUpperCase()}\n
         Telefone: ${tripData.phone}\n
         Data de Saída: ${tripData.departureDate}\n
         Horário de Saída: ${tripData.departureTime}\n
         Horário de Chegada: ${tripData.arrivalTime}\n
-        Destino: ${tripData.destination}\n
-        Passageiros Embarcados: ${passengers.length}\n
+        Destino: ${tripData.destination.toUpperCase()}\n
+        Passageiros Embarcados: ${totalPassageiro}\n  
                 `;
     }
 
