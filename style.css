@@ -93,7 +93,7 @@ ol li::before {
 /* Estilos específicos para impressão */
 @media print {
     body * {
-        visibility:visible;
+        visibility:hidden;
     }
 
     #print-area, #print-area * {
@@ -109,6 +109,8 @@ ol li::before {
         color: black; /* Garantir que o texto seja visível */
         margin: 0; /* Remover margens que podem afetar a impressão */
         display: block; /* Garantir que a área de impressão seja exibida */
+        page-break-before: auto; /* Evitar quebras de página desnecessárias antes da área de impressão */
+        page-break-after: auto; /* Evitar quebras de página desnecessárias após a área de impressão */
     }
 }
 
