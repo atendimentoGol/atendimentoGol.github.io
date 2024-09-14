@@ -102,20 +102,22 @@ document.addEventListener("DOMContentLoaded", () => {
             listItem.textContent = `${passenger}  [${location_array[index]}]`;
             printPassengerList.appendChild(listItem);
         });
-
+    
         // Copia os detalhes da viagem para a área de impressão
         printTripDetails.textContent = tripDetails.textContent;
-
+    
         // Mostra a área de impressão
         printArea.style.display = 'block';
-
+        console.log('Área de impressão exibida'); // Log para depuração
+    
         // Aguarda um pouco para garantir que o conteúdo esteja visível
         setTimeout(() => {
             // Chama a função de impressão
             window.print();
-
+    
             // Esconde a área de impressão após a impressão
             printArea.style.display = 'none';
+            console.log('Impressão concluída'); // Log para depuração
         }, 100); // Aguarda 100ms para garantir que o conteúdo esteja visível
     });
 

@@ -94,21 +94,21 @@ button:hover {
 }
 
 @media print {
+    /* Oculta tudo exceto a área de impressão */
     body * {
         visibility: hidden;
     }
+    
     #print-area, #print-area * {
         visibility: visible;
     }
+    
+    /* Ajusta o tamanho da área de impressão */
     #print-area {
-        display: block;
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
-        padding: 20px;
-        background-color: #080808;
-        border: 1px solid #ccc;
     }
 }
 
@@ -208,4 +208,6 @@ button:hover {
     }
   
 }
+
+
 
