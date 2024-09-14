@@ -184,6 +184,6 @@ ol li::before {
     }
 
     #print-area {
-        background: orange;
+        background: orange; /* Temporário para debugging */
     }
 }

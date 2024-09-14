@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     printButton.addEventListener('click', () => {
+        // Preencher a lista de passageiros para impressão
         printPassengerList.innerHTML = '';
        
         passengers.forEach((passenger, index) => {
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         printTripDetails.textContent = tripDetails.textContent;
 
+        // Exibir a área de impressão e aguardar um curto período para garantir a visibilidade
         printArea.style.display = 'block';
 
         setTimeout(() => {
@@ -105,3 +107,4 @@ document.addEventListener("DOMContentLoaded", () => {
         location.reload();
     });
 });
+
