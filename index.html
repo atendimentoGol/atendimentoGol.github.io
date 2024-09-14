@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Viagem Gol</title>
     <link rel="stylesheet" href="style.css">
-s    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -16,36 +15,33 @@ s    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.m
 
         <form id="trip-form">
             <label for="driver-name">Nome do Motorista:</label>
-            <input type="text" id="driver-name"  required><br>
+            <input type="text" id="driver-name" required><br>
            
             <label for="plate">Placa do Veículo:</label>
-            <input type="text" id="plate"  required><br>
+            <input type="text" id="plate" required><br>
 
             <label for="phone">Telefone:</label>
-            <input type="tel" id="phone"  required><br>
+            <input type="tel" id="phone" required><br>
 
             <label for="departure-date">Data de Saída:</label>
             <input type="date" id="departure-date" required><br>
 
             <label for="departure-time">Horário de Saída:</label>
-            <input type="time" id="departure-time"  required><br>
+            <input type="time" id="departure-time" required><br>
 
             <label for="arrival-time">Horário de Chegada:</label>
-            <input type="time" id="arrival-time"  required><br>
+            <input type="time" id="arrival-time" required><br>
 
             <label for="destination">Destino:</label>
-            <input type="text" id="destination"  required><br>
+            <input type="text" id="destination" required><br>
 
-             <label for="passenger-name">Nome do Passageiro:</label>
+            <label for="passenger-name">Nome do Passageiro:</label>
             <input type="text" id="passenger-name"><br>
             
             <label for="location">Localizador:</label>
             <input type="text" id="location" maxlength="6"><br>
 
-           
-
             <button type="button" id="add-passenger">Adicionar Passageiro</button>
-
             <button type="submit">Concluir</button>
         </form>
 
@@ -59,16 +55,12 @@ s    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.m
         <button id="restart">Resetar</button>
 
         <div id="print-area" class="printable">
-           
-            <img src="./gol.svg" id="imagem" alt="TESTE" height="100px" width="100px">
-            <h3  >Detalhes da Viagem</h2>
-            <pre id="print-trip-details"> 
-                
-            </pre>
-            <h3 >Passageiros e Localizadores:</h2>
+            <img src="./gol.svg" id="imagem" alt="LOGO" height="100px" width="100px">
+            <h3>Detalhes da Viagem</h3>
+            <pre id="print-trip-details"></pre>
+            <h3>Passageiros e Localizadores:</h3>
             <ul id="print-passenger-list"></ul>
         </div>
-
     </div>
 
     <script src="script.js"></script>
