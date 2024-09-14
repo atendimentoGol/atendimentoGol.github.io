@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const { jsPDF } = window.jspdf;
     const tripForm = document.getElementById('trip-form');
     const passengerList = document.getElementById('passenger-list');
+    const printPassengerList = document.getElementById('print-passenger-list');
     const tripDetails = document.getElementById('trip-details');
     const printButton = document.getElementById('print-button');
+    const printArea = document.getElementById('print-area');
+    const printTripDetails = document.getElementById('print-trip-details');
 
     const passengers = [];
     const location_array = [];
@@ -25,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
             deleteButton.addEventListener('click', () => {
                 passengers.splice(index, 1);
                 location_array.splice(index, 1);
-                updatePassengerList(); // Re-atualiza a lista de passageiros
-                displayTripDetails(); // Atualiza os detalhes da viagem
+                updatePassengerList();
+                displayTripDetails();
             });
 
             listItem.appendChild(localizador);
@@ -48,14 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         tripDetails.textContent = `
-        Nome do Motorista: ${tripData.driverName.toUpperCase()}\n
-        Placa: ${tripData.plate.toUpperCase()}\n
-        Telefone: ${tripData.phone}\n
-        Data de Saída: ${tripData.departureDate}\n
-        Horário de Saída: ${tripData.departureTime}\n
-        Horário de Chegada: ${tripData.arrivalTime}\n
-        Destino: ${tripData.destination.toUpperCase()}\n
-        Passageiros Embarcados: ${passengers.length}\n`;
+        Nome do Motorista: ${tripData.driverName.toUpperCase()}
+        Placa: ${tripData.plate.toUpperCase()}
+        Telefone: ${tripData.phone}
+        Data de Saída: ${tripData.departureDate}
+        Horário de Saída: ${tripData.departureTime}
+        Horário de Chegada: ${tripData.arrivalTime}
+        Destino: ${tripData.destination.toUpperCase()}
+        Passageiros Embarcados: ${passengers.length}
+        `;
     }
 
     document.getElementById('add-passenger').addEventListener('click', () => {
@@ -80,21 +83,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     printButton.addEventListener('click', () => {
-        const doc = new jsPDF();
-
-        doc.setFontSize(12);
-
-        // Adiciona os detalhes da viagem
-        const details = tripDetails.textContent;
-        doc.text(details, 10, 10);
-
-        // Adiciona a lista de passageiros ao PDF
+        printPassengerList.innerHTML = '';
+       
         passengers.forEach((passenger, index) => {
-            doc.text(`${passenger}  [${location_array[index]}]`, 10, 30 + (index * 10));
+            const listItem = document.createElement('li');
+            listItem.textContent = `${passenger}  [${location_array[index]}]`;
+            printPassengerList.appendChild(listItem);
         });
 
-        // Salva o PDF
-        doc.save('trip-details.pdf');
+        printTripDetails.textContent = tripDetails.textContent;
+
+        printArea.style.display = 'block';
+
+        setTimeout(() => {
+            window.print();
+            printArea.style.display = 'none';
+        }, 100);
     });
 
     document.getElementById("restart").addEventListener("click", () => {
