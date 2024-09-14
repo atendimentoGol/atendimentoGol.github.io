@@ -92,10 +92,7 @@ Passageiros Embarcados: ${passengers.length}`;
         printArea.style.display = 'block';
 
         // Garantir que o conteúdo é carregado antes de imprimir
-        setTimeout(() => {
-            window.print();
-            printArea.style.display = 'none';
-        }, 100);
+       
     });
 
     document.getElementById("restart").addEventListener("click", () => {
