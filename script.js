@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tripDetails = document.getElementById('trip-details');
     const printButton = document.getElementById('print-button');
     const printArea = document.getElementById('print-area');
+    const printTripDetails = document.getElementById('print-trip-details');
 
     // Array para armazenar os nomes dos passageiros
     const passengers = [];
@@ -92,8 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Adiciona um evento de clique ao botão "Imprimir Passageiros"
     printButton.addEventListener('click', () => {
-        // Copia a lista de passageiros para a área de impressão
+        // Limpa a área de impressão dos passageiros
         printPassengerList.innerHTML = '';
+       
+        // Adiciona cada passageiro à lista de impressão
         passengers.forEach((passenger, index) => {
             const listItem = document.createElement('li');
             listItem.textContent = `${passenger}  [${location_array[index]}]`;
@@ -102,8 +105,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Copia os detalhes da viagem para a área de impressão
         printTripDetails.textContent = tripDetails.textContent;
-        printArea.style.display = 'block'; // Exibe a área de impressão
-        window.print();
+
+        // Mostra a área de impressão
+        printArea.style.display = 'block';
+
+        // Aguarda um pouco para garantir que o conteúdo esteja visível
+        setTimeout(() => {
+            // Chama a função de impressão
+            window.print();
+
+            // Esconde a área de impressão após a impressão
+            printArea.style.display = 'none';
+        }, 100); // Aguarda 100ms para garantir que o conteúdo esteja visível
     });
 
     // Botão para reiniciar a página
