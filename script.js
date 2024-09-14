@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const passengers = [];
     const location_array = [];
 
-    // Função para atualizar a lista de passageiros na tela
     function updatePassengerList() {
         passengerList.innerHTML = '';
 
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Função para exibir os detalhes da viagem
     function displayTripDetails() {
         const tripData = {
             driverName: document.getElementById('driver-name').value,
@@ -60,35 +58,31 @@ document.addEventListener("DOMContentLoaded", () => {
         Passageiros Embarcados: ${passengers.length}\n`;
     }
 
-    // Adiciona um evento de clique ao botão "Adicionar Passageiro"
     document.getElementById('add-passenger').addEventListener('click', () => {
         const passengerName = document.getElementById('passenger-name').value;
         const locations = document.getElementById("location").value;
 
         if (passengerName || locations) {
-            // Adiciona o nome do passageiro e a localização ao array
             passengers.push(passengerName.toUpperCase());
             location_array.push(locations.toUpperCase());
 
-            updatePassengerList(); // Atualiza a lista de passageiros
-            displayTripDetails();  // Atualiza os detalhes da viagem
+            updatePassengerList();
+            displayTripDetails();
 
-            // Limpa os campos de entrada
             document.getElementById('passenger-name').value = '';
             document.getElementById("location").value = '';
         }
     });
 
-    // Adiciona um evento de submissão ao formulário de viagem
     tripForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Previne o comportamento padrão de submissão do formulário
-        displayTripDetails(); // Exibe os detalhes da viagem ao submeter o formulário
+        e.preventDefault();
+        displayTripDetails();
     });
 
-    // Adiciona um evento de clique ao botão "Gerar PDF"
     printButton.addEventListener('click', () => {
-        // Cria um novo documento PDF
         const doc = new jsPDF();
+
+        doc.setFontSize(12);
 
         // Adiciona os detalhes da viagem
         const details = tripDetails.textContent;
@@ -96,14 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Adiciona a lista de passageiros ao PDF
         passengers.forEach((passenger, index) => {
-            doc.text(`${passenger}  [${location_array[index]}]`, 10, 20 + (index * 10));
+            doc.text(`${passenger}  [${location_array[index]}]`, 10, 30 + (index * 10));
         });
 
         // Salva o PDF
         doc.save('trip-details.pdf');
     });
 
-    // Botão para reiniciar a página
     document.getElementById("restart").addEventListener("click", () => {
         location.reload();
     });

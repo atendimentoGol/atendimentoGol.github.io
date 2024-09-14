@@ -94,7 +94,6 @@ button:hover {
 }
 
 @media print {
-    /* Oculta tudo exceto a área de impressão */
     body * {
         visibility: hidden;
     }
@@ -103,14 +102,17 @@ button:hover {
         visibility: visible;
     }
     
-    /* Ajusta o tamanho da área de impressão */
     #print-area {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
+        background: white; /* Garantir que o fundo seja branco para melhor contraste */
+        color: black; /* Garantir que o texto seja visível */
+        margin: 0; /* Remover margens que podem afetar a impressão */
     }
 }
+
 
 
 /* Estilo para cada item da lista de passageiros */
