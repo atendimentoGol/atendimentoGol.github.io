@@ -42,9 +42,10 @@ pre {
 #print-passenger-list,
 h3,
 #imagem {
-    margin-left: 72px;
+    margin-left: 0; /* Ajuste para centralizar o conteúdo corretamente */
 }
 
+/* Botões */
 button {
     margin-top: 15px;
     background-color: #FF7000;
@@ -80,7 +81,7 @@ ol li::before {
     counter-increment: list-item; /* Incrementa o contador para cada item */
     content: counter(list-item) "."; /* Define o conteúdo como o contador decimal seguido de um ponto */
     position: absolute; /* Posição absoluta em relação ao li */
-    left: 0px; /* Ajusta a posição do marcador para a esquerda */
+    left: 0; /* Ajusta a posição do marcador para a esquerda */
     color: black; /* Cor do marcador */
     font-size: 20px; /* Tamanho do marcador */
 }
@@ -184,5 +185,6 @@ ol li::before {
 
     #print-area {
         background: orange; /* Cor de fundo temporária para verificar visibilidade */
+        display: block; /* Garantir que a área de impressão seja exibida */
     }
 }
