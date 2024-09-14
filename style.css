@@ -1,3 +1,4 @@
+/* Estilo geral */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,84 +15,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-}
-
-input, button {
-    width: 100%;
-    margin-top: 5px;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-pre {
-    font-weight: bold;
-    background-color: white;
-    text-align: left;
-}
-
-#print-passenger-list, h3, #imagem {
-    margin-left: 0;
-}
-
-button {
-    margin-top: 15px;
-    background-color: #FF7000;
-    color: rgb(15, 14, 14);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #f7d476;
-    color: rgb(20, 18, 18);
-}
-
-ol {
-    padding-left: 0;
-    list-style: none;
-}
-
-ol li {
-    display: flex;
-    padding-left: 20px;
-    border-bottom: 1px solid gray;
-    align-items: center;
-    color: rgb(7, 7, 7);
-    position: relative;
-}
-
-ol li::before {
-    counter-increment: list-item;
-    content: counter(list-item) ".";
-    position: absolute;
-    left: 0;
-    color: black;
-    font-size: 20px;
-}
-
-#print-area {
-    display: none;
-}
-
+/* Adicionando estilos para impressão */
 @media print {
     body * {
         visibility: hidden;
     }
-    
+
     #print-area, #print-area * {
         visibility: visible;
     }
-    
+
     #print-area {
         position: absolute;
         left: 0;
@@ -100,55 +33,20 @@ ol li::before {
         background: white;
         color: black;
         margin: 0;
-        padding: 10px; /* Adiciona padding para evitar cortes */
-        box-sizing: border-box;
     }
 }
 
-#passenger-list li, #print-passenger-list li {
-    margin-top: 5px;
-    align-items: center;
+#print-area {
+    display: block;
 }
 
-.delete-passenger {
-    width: 20%;
-    background-color: #f0eaea;
-    color: rgb(0, 0, 0);
-    border: none;
-    margin-left: auto;
-    padding: 5px 8px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    font-size: 0.8em;
-}
-
-.localizador-passenger {
-    width: 20%;
-    text-align: center;
-    background-color: #e6fc23;
-    color: rgb(0, 0, 0);
-    border: none;
-    margin-left: auto;
-    padding: auto;
-    cursor: pointer;
-    margin-bottom: 10px;
-    font-size: 0.8em;
-}
-
-.passenger-name {
-    margin-left: 10px;
-    flex-grow: 1;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
+/* Responsividade para dispositivos móveis */
 @media (max-width: 600px) {
     body {
         margin: 10px;
     }
     
-    h1, h2 {
+    h1, h2, h3 {
         font-size: 1.2em;
     }
 
@@ -168,22 +66,5 @@ ol li::before {
     form {
         display: flex;
         flex-direction: column;
-    }
-
-    #trip-details, #print-trip-details {
-        font-size: 0.9em;
-    }
-
-    .passenger-name {
-        margin-left: 0;
-    }
-
-    .delete-passenger {
-        font-size: 0.7em;
-        padding: 3px 5px;
-    }
-
-    #print-area {
-        background: orange; /* Temporário para debugging */
     }
 }

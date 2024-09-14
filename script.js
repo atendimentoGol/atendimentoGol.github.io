@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const printArea = document.getElementById('print-area');
     const printTripDetails = document.getElementById('print-trip-details');
 
+    // Array para armazenar os nomes dos passageiros
     const passengers = [];
     const location_array = [];
 
     function updatePassengerList() {
         passengerList.innerHTML = '';
-
         passengers.forEach((passenger, index) => {
             const listItem = document.createElement('li');
             const localizador = document.createElement('span');
@@ -49,16 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
             passengers: passengers
         };
 
-        tripDetails.textContent = `
-        Nome do Motorista: ${tripData.driverName.toUpperCase()}
-        Placa: ${tripData.plate.toUpperCase()}
-        Telefone: ${tripData.phone}
-        Data de Saída: ${tripData.departureDate}
-        Horário de Saída: ${tripData.departureTime}
-        Horário de Chegada: ${tripData.arrivalTime}
-        Destino: ${tripData.destination.toUpperCase()}
-        Passageiros Embarcados: ${passengers.length}
-        `;
+        tripDetails.textContent = `Nome do Motorista: ${tripData.driverName.toUpperCase()}
+Placa: ${tripData.plate.toUpperCase()}
+Telefone: ${tripData.phone}
+Data de Saída: ${tripData.departureDate}
+Horário de Saída: ${tripData.departureTime}
+Horário de Chegada: ${tripData.arrivalTime}
+Destino: ${tripData.destination.toUpperCase()}
+Passageiros Embarcados: ${passengers.length}`;
     }
 
     document.getElementById('add-passenger').addEventListener('click', () => {
@@ -83,18 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     printButton.addEventListener('click', () => {
-        // Preencher a lista de passageiros para impressão
         printPassengerList.innerHTML = '';
-       
         passengers.forEach((passenger, index) => {
             const listItem = document.createElement('li');
-            listItem.textContent = `${passenger}  [${location_array[index]}]`;
+            listItem.textContent = `${passenger} [${location_array[index]}]`;
             printPassengerList.appendChild(listItem);
         });
 
         printTripDetails.textContent = tripDetails.textContent;
 
-        // Exibir a área de impressão e aguardar um curto período para garantir a visibilidade
         printArea.style.display = 'block';
 
         setTimeout(() => {
