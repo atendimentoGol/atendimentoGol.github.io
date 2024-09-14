@@ -1,22 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const { jsPDF } = window.jspdf;
     const tripForm = document.getElementById('trip-form');
     const passengerList = document.getElementById('passenger-list');
-    const printPassengerList = document.getElementById('print-passenger-list');
     const tripDetails = document.getElementById('trip-details');
     const printButton = document.getElementById('print-button');
-    const printArea = document.getElementById('print-area');
-    const printTripDetails = document.getElementById('print-trip-details');
 
-    // Array para armazenar os nomes dos passageiros
     const passengers = [];
     const location_array = [];
 
     // Função para atualizar a lista de passageiros na tela
     function updatePassengerList() {
-        // Limpa a lista visual
         passengerList.innerHTML = '';
 
-        // Recria a lista de passageiros
         passengers.forEach((passenger, index) => {
             const listItem = document.createElement('li');
             const localizador = document.createElement('span');
@@ -29,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
             deleteButton.textContent = 'Excluir';
             deleteButton.classList.add('delete-passenger');
             deleteButton.addEventListener('click', () => {
-                // Remove o passageiro e a localização correspondente
                 passengers.splice(index, 1);
                 location_array.splice(index, 1);
                 updatePassengerList(); // Re-atualiza a lista de passageiros
@@ -42,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Função para exibir os detalhes da viagem, incluindo o total de passageiros
+    // Função para exibir os detalhes da viagem
     function displayTripDetails() {
         const tripData = {
             driverName: document.getElementById('driver-name').value,
@@ -63,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Horário de Saída: ${tripData.departureTime}\n
         Horário de Chegada: ${tripData.arrivalTime}\n
         Destino: ${tripData.destination.toUpperCase()}\n
-        Passageiros Embarcados: ${passengers.length}\n`; // Aqui, usamos passengers.length para contar corretamente
+        Passageiros Embarcados: ${passengers.length}\n`;
     }
 
     // Adiciona um evento de clique ao botão "Adicionar Passageiro"
@@ -91,34 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
         displayTripDetails(); // Exibe os detalhes da viagem ao submeter o formulário
     });
 
-    // Adiciona um evento de clique ao botão "Imprimir Passageiros"
+    // Adiciona um evento de clique ao botão "Gerar PDF"
     printButton.addEventListener('click', () => {
-        // Limpa a área de impressão dos passageiros
-        printPassengerList.innerHTML = '';
-       
-        // Adiciona cada passageiro à lista de impressão
+        // Cria um novo documento PDF
+        const doc = new jsPDF();
+
+        // Adiciona os detalhes da viagem
+        const details = tripDetails.textContent;
+        doc.text(details, 10, 10);
+
+        // Adiciona a lista de passageiros ao PDF
         passengers.forEach((passenger, index) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${passenger}  [${location_array[index]}]`;
-            printPassengerList.appendChild(listItem);
+            doc.text(`${passenger}  [${location_array[index]}]`, 10, 20 + (index * 10));
         });
-    
-        // Copia os detalhes da viagem para a área de impressão
-        printTripDetails.textContent = tripDetails.textContent;
-    
-        // Mostra a área de impressão
-        printArea.style.display = 'block';
-        console.log('Área de impressão exibida'); // Log para depuração
-    
-        // Aguarda um pouco para garantir que o conteúdo esteja visível
-        setTimeout(() => {
-            // Chama a função de impressão
-            window.print();
-    
-            // Esconde a área de impressão após a impressão
-            printArea.style.display = 'none';
-            console.log('Impressão concluída'); // Log para depuração
-        }, 100); // Aguarda 100ms para garantir que o conteúdo esteja visível
+
+        // Salva o PDF
+        doc.save('trip-details.pdf');
     });
 
     // Botão para reiniciar a página
