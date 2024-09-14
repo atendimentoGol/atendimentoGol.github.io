@@ -89,9 +89,13 @@ Passageiros Embarcados: ${passengers.length}`;
 
         printTripDetails.textContent = tripDetails.textContent;
 
-        printArea.style.display = 'block';
+        printArea.style.display = 'none';
 
         // Garantir que o conteúdo é carregado antes de imprimir
+        setTimeout(() => {
+            window.print();
+            printArea.style.display = 'block';
+        }, 1000);
        
     });
 
