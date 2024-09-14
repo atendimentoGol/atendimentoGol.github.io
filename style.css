@@ -15,7 +15,81 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Adicionando estilos para impressão */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+pre {
+    font-weight: bold;
+    background-color: white;
+    text-align: left;
+}
+
+#print-passenger-list,
+h3,
+#imagem {
+    margin-left: 72px;
+}
+
+button {
+    margin-top: 15px;
+    background-color: #FF7000;
+    color: rgb(15, 14, 14);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f7d476;
+    color: rgb(20, 18, 18);
+}
+
+/* Estilo para a lista não ordenada */
+ol {
+    padding-left: 0; /* Remove o padding padrão da lista */
+    list-style: none; /* Remove o estilo padrão da lista */
+}
+
+/* Estilo para os itens da lista */
+ol li {
+    display: flex; /* Aplica o flexbox aos itens da lista */
+    padding-left: 20px; /* Espaçamento interno dos itens da lista */
+    border-bottom: 1px solid gray;
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    color: rgb(7, 7, 7); /* Cor do texto dos itens da lista */
+    position: relative; /* Torna o li um contexto de posicionamento */
+}
+
+/* Pseudo-elemento antes de cada item da lista */
+ol li::before {
+    counter-increment: list-item; /* Incrementa o contador para cada item */
+    content: counter(list-item) "."; /* Define o conteúdo como o contador decimal seguido de um ponto */
+    position: absolute; /* Posição absoluta em relação ao li */
+    left: 0px; /* Ajusta a posição do marcador para a esquerda */
+    color: black; /* Cor do marcador */
+    font-size: 20px; /* Tamanho do marcador */
+}
+
+#print-area {
+    display: none;
+}
+
+/* Estilos específicos para impressão */
 @media print {
     body * {
         visibility: hidden;
@@ -30,41 +104,85 @@ body {
         left: 0;
         top: 0;
         width: 100%;
-        background: white;
-        color: black;
-        margin: 0;
+        background: white; /* Garantir que o fundo seja branco para melhor contraste */
+        color: black; /* Garantir que o texto seja visível */
+        margin: 0; /* Remover margens que podem afetar a impressão */
+        display: block; /* Garantir que a área de impressão seja exibida */
     }
 }
 
-#print-area {
-    display: block;
+/* Estilo para cada item da lista de passageiros */
+#passenger-list li, #print-passenger-list li {
+    margin-top: 5px; /* Espaçamento superior */
+    align-items: center; /* Alinha verticalmente os itens */
 }
 
-/* Responsividade para dispositivos móveis */
+/* Estilo para o botão de exclusão */
+.delete-passenger {
+    position: relative;
+    width: 20%;
+    background-color: #f0eaea; /* Cor do botão de exclusão */
+    color: rgb(0, 0, 0);
+    border: none;
+    margin-left: auto;
+    padding: 5px 8px; /* Espaçamento interno menor (5px superior/inferior, 8px esquerda/direita) */
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 0.8em; /* Tamanho de fonte menor para o botão */
+}
+
+.localizador-passenger {
+    position: relative;
+    width: 20%;
+    text-align: center;
+    background-color: #e6fc23; /* Cor do botão de localizador */
+    color: rgb(0, 0, 0);
+    border: none;
+    margin-left: auto;
+    padding: auto; /* Espaçamento interno menor */
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 0.8em; /* Tamanho de fonte menor para o botão */
+}
+
+/* Estilos para o texto do nome do passageiro */
+.passenger-name {
+    margin-left: 10px; /* Espaço à esquerda do nome do passageiro */
+    flex-grow: 1; /* Permite que o nome do passageiro ocupe o espaço restante */
+    overflow: hidden; /* Evita que o nome do passageiro vaze */
+    white-space: nowrap; /* Impede que o nome do passageiro quebre para uma nova linha */
+    text-overflow: ellipsis; /* Adiciona reticências (...) ao final do nome se ele vazar */
+}
+
+/* Estilos para tornar o design responsivo em telas pequenas */
 @media (max-width: 600px) {
     body {
-        margin: 10px;
+        margin: 10px; /* Margem menor */
     }
-    
+
     h1, h2, h3 {
-        font-size: 1.2em;
+        font-size: 1.2em; /* Tamanho de fonte menor para títulos */
     }
 
     label {
-        margin-top: 5px;
+        margin-top: 5px; /* Menor espaçamento superior */
     }
 
     input, button {
-        width: 100%;
-        margin-top: 3px;
+        width: 100%; /* Campos e botões ocupam toda a largura disponível */
+        margin-top: 3px; /* Menor espaçamento superior */
     }
 
     button {
-        margin-bottom: 10px;
+        margin-bottom: 10px; /* Espaçamento inferior para botões */
     }
 
     form {
-        display: flex;
-        flex-direction: column;
+        display: flex; /* Flexbox para formulário */
+        flex-direction: column; /* Coloca elementos em coluna */
+    }
+
+    #print-area {
+        background: orange; /* Cor de fundo temporária para verificar visibilidade */
     }
 }

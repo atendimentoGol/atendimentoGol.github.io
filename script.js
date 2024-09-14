@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const printArea = document.getElementById('print-area');
     const printTripDetails = document.getElementById('print-trip-details');
 
-    // Array para armazenar os nomes dos passageiros
     const passengers = [];
     const location_array = [];
 
@@ -92,6 +91,7 @@ Passageiros Embarcados: ${passengers.length}`;
 
         printArea.style.display = 'block';
 
+        // Garantir que o conteúdo é carregado antes de imprimir
         setTimeout(() => {
             window.print();
             printArea.style.display = 'none';
