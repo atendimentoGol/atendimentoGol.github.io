@@ -99,8 +99,10 @@ Passageiros Embarcados: ${passengers.length}`;
        
     });
 
+    //Reinicia a página
     document.getElementById("restart").addEventListener("click", () => {
         location.reload();
     });
 });
+
 
